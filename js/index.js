@@ -15,7 +15,7 @@ var currentQuestion = 0;
 // array of questions
 //    question object
 var questions = [];
-
+document.addEventListener("DOMContentLoaded", function() {
 fetch(
   "https://opentdb.com/api.php?amount=10&category=11&difficulty=easy&type=multiple"
 )
@@ -43,6 +43,7 @@ fetch(
 
     updateQuestion();
   });
+});
 
 nextBtn.addEventListener("click", updateQuestion);
 
@@ -87,7 +88,7 @@ function selectAnswer() {
 
 // MODAL end game
 
-var modal = document.querySelector(".modal");
+var modal = document.querySelector("#end-modal");
 
 function endGame() {
   modal.classList.toggle("hidden");
@@ -100,3 +101,11 @@ document
   .addEventListener("click", function() {
     modal.classList.toggle("hidden");
   });
+
+// start modal
+var start = document.querySelector("#start");
+
+document.querySelector("#start-button").addEventListener("click", function () {
+  console.log('start');
+  start.classList.toggle("hidden");
+});

@@ -101,6 +101,17 @@ main {
   font-size: 2em;
 }
 
+#next-button {
+  width: 30%;
+  height: 75%;
+  font-family: 'Lobster', cursive;
+  font-size: 2em;
+}
+
+#next-button:hover {
+  border: goldenrod 3px solid;
+}
+
 /* Modal ----------------------------------------- */
 
 .modal {
@@ -122,25 +133,56 @@ main {
   display: none;
 }
 
+#start h2{
+  margin-top: -0.1em;
+}
+
 #close {
   position: absolute;
   top: 7%;
   right: 5%;
-
-  font-size: 0.3em;
+  font-size: 0.5em;
+  font-weight: 700;
   line-height: 0.2em;
-
-  height: 1.6em;
-  width: 1.6em;
+  height: 1.3em;
+  width: 1.3em;
   border: none;
   border-radius: 50%;
+  background-color: goldenrod;
 }
+
+#close:hover {
+  border: 3px solid black;
+}
+
+#start-button {
+  position: absolute;
+  top: 70%;
+  right: 35%;
+  font-size: 0.5em;
+  font-weight: 700;
+  line-height: 0.2em;
+  height: 1.3em;
+  width: 4em;
+  border: none;
+  border-radius: 5px;
+  background-color: goldenrod;
+  border-bottom: 3px solid black;
+  border-top: 3px solid black;
+}
+
+#start-button:hover {
+  border-bottom: 5px solid black;
+  border-top: 5px solid black;
+}
+
+
 
 /* FOOTER ----------------------------------------- */
 footer {
   background-color: goldenrod;
   width: 60%;
-  height: 10vh;
+  height: 7vh;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
