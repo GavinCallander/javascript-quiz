@@ -34,7 +34,9 @@ fetch(
       myQuestion.answers.push(result.incorrect_answers[0]);
       myQuestion.answers.push(result.incorrect_answers[1]);
       myQuestion.answers.push(result.incorrect_answers[2]);
-      myQuestion.answers.push(result.correct_answer);
+      // randomize adding correct_answer
+      let randnum = Math.floor(Math.random() * 4);
+      myQuestion.answers.splice(randnum, 0, result.correct_answer);
 
       questions.push(myQuestion);
     });
