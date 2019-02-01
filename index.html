@@ -1,10 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>JavaScript Quiz</title>
-  <script src="/js/index.js" type="text/javascript"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Javascript Quiz | Gavin and Carlo</title>
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-  <h1>Hello world!</h1>
+  <header>
+    <h1>Javascript Quiz</h1>
+  </header>
+  <main>
+    <section class="question-box">
+      QUESTION
+    </section>
+
+    <section class="answer-box">
+      <div id="one" class="answer">ANSWER</div>
+      <div id="two" class="answer">ANSWER</div>
+      <div id="three" class="answer">ANSWER</div>
+      <div id="four" class=" answer">ANSWER</div>
+    </section>
+
+    <section class="nav-box">
+      <!-- <button id="back-button">Back</button> -->
+      <!-- <button id="check-button">Check Score</button> -->
+      <div>
+        <p>Your Score: <span id="score-span">0</span></p>
+      </div>
+      <button id="next-button">Next</button>
+    </section>
+
+    <section class="modal hidden">
+      <h2>You WIN!</h2>
+      <button id="close">Close</button>
+    </section>
+
+
+  </main>
+  <footer>
+    <p>&copy; Gavin and Carlo</p>
+  </footer>
+
+
+  <script src="js/index.js"></script>
 </body>
+
 </html>

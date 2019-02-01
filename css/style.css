@@ -1,0 +1,120 @@
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Lobster', cursive;
+  background-color: #ccc;
+  background-image: url("../img/prism.png");
+}
+
+/* HEADER ----------------------------------------- */
+
+header {
+  background-color: goldenrod;
+  
+  width: 60%;
+  text-align: center;
+}
+
+/* Q/A Box ----------------------------------------- */
+
+main {
+  width: 60%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  position: relative;
+}
+
+.question-box {
+  height: 35%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Lobster', cursive;
+  font-size: 3em;
+  margin: 0.5em;
+  background-color: white;
+  padding: 0.5em;
+}
+
+.answer-box {
+  display: grid;
+  height: 35%;
+  grid-template-columns: 50fr 50fr;
+  grid-template-rows:  50fr 50fr;
+  margin: 0.5em;
+}
+
+.answer {
+  display: flex;
+  font-family: 'Lobster', cursive;
+  font-size: 2em;
+  justify-content: center;
+  align-items: center;
+  margin: 0.1em;
+  background-color: white;
+}
+
+.nav-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 17%;
+}
+
+.nav-box button {
+  width: 30%;
+  height: 70%;
+}
+
+.nav-box >div {
+  width: 30%;
+  height: 70%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+
+  font-size: 2em;
+}
+
+/* Modal ----------------------------------------- */
+
+
+.modal {
+  width: 40%;
+  height: 400px;
+  background-color: goldenrod;
+  position: fixed;
+  display: flex;
+  top: 25%;
+  left: 30%;
+  font-family: 'Lobster', cursive;
+  font-size: 5em;
+  justify-content: center;
+  align-items: center;
+  /* transform: translate(-50%, -50%); */
+}
+
+.hidden {
+  display: none;
+}
+
+/* FOOTER ----------------------------------------- */
+footer {
+  background-color: goldenrod;
+  width: 60%;
+  height: 10vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 0.8em;
+}
