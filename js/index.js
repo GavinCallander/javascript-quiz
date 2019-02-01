@@ -1,30 +1,32 @@
 console.log("JS file is linked up!");
 
-
 //variables
 
+var questionBox = document.querySelector(".question-box");
+var answers = document.querySelectorAll(".answer");
 
+var scoreSpan = document.querySelector("#score-span");
 
-//totalScore
+var nextBtn = document.querySelector("#next-button");
 
-
-//array of player answer
+var playerScore = 0;
+var currentQuestion = 0;
 
 // array of questions
 //    question object
+var questions = [];
 
-var questions = [
-
-]
-
-fetch("https://opentdb.com/api.php?amount=10&category=11&difficulty=easy&type=multiple")
-  .then(function (data) {
+fetch(
+  "https://opentdb.com/api.php?amount=10&category=11&difficulty=easy&type=multiple"
+)
+  .then(function(data) {
     return data.json();
-  }).then(function (json) {
+  })
+  .then(function(json) {
     //console.log(json.results); //array of object
-    var resultsArr = json.results
+    var resultsArr = json.results;
 
-    resultsArr.forEach(function (result) {
+    resultsArr.forEach(function(result) {
       let myQuestion = {};
       myQuestion.question = result.question;
       myQuestion.correctAnswer = result.correct_answer;
@@ -38,105 +40,61 @@ fetch("https://opentdb.com/api.php?amount=10&category=11&difficulty=easy&type=mu
     });
 
     updateQuestion();
-
-
   });
 
-// var questions = [
-//   {
-//     question: "this is the question",
-//     answers: ["one", "two", "three", "four"],
-//     correctAnswer: "one"
-//   },
-//   {
-//     question: "this is another question",
-//     answers: ["a", "b", "c", "d"],
-//     correctAnswer: "b"
-//   },
-//   {
-//     question: "this is yet another question",
-//     answers: ["a1", "b2", "c3", "d4"],
-//     correctAnswer: "d4"
-//   }
-// ];
-var questionBox = document.querySelector('.question-box');
-//select all answer divs -> change textContent
-var answers = document.querySelectorAll('.answer');
+nextBtn.addEventListener("click", updateQuestion);
 
 function updateQuestion() {
-  questionBox.textContent = questions[0].question;
-  answers.forEach(function (answer, i) {
-    answer.textContent = questions[0].answers[i];
-    answer.addEventListener('click', selectAnswer);
-  })
-}
-
-
-var nextBtn = document.querySelector("#next-button");
-nextBtn.addEventListener("click", nextQuestion);
-
-// var prevBtn = document.querySelector("#back-button");
-// prevBtn.addEventListener("click", prevQuestion);
-
-
-// function to change question, answer
-function nextQuestion() {
-  questionBox.textContent = questions[currentQuestion].question;
-
-  answers.forEach(function (answer, i) {
-    answer.textContent = questions[currentQuestion].answers[i];
+  // update question
+  questionBox.querySelector("p").innerHTML =
+    questions[currentQuestion].question;
+  // update each answer, clear classes, add event listener
+  answers.forEach(function(answer, i) {
+    answer.innerHTML = questions[currentQuestion].answers[i];
+    answer.classList.remove("correct");
+    answer.classList.remove("incorrect");
+    answer.addEventListener("click", selectAnswer);
   });
-
 }
 
-// function prevQuestion() {
-//   currentQuestion--;
-//   questionBox.textContent = questions[currentQuestion].question;
-
-//   answers.forEach(function (answer, i) {
-//     answer.textContent = questions[currentQuestion].answers[i];
-//   });
-// }
-
-var playerAnswers = [];
-var playerScore = 0;
-var currentQuestion = 0;
-
-// function to select answer
+// function to select answer & compare player vs correct
 function selectAnswer() {
-  playerAnswers.push(this.textContent);
-  console.log(playerAnswers);
-  compareAnswer();
-}
-
-// function to compare player vs correct
-function compareAnswer() {
-  if (playerAnswers[currentQuestion] === questions[currentQuestion].correctAnswer) {
+  // once clicked, remove all click events
+  answers.forEach(function(answer) {
+    answer.removeEventListener("click", selectAnswer);
+  });
+  // compare answer
+  if (
+    this.textContent === questions[currentQuestion].correctAnswer
+  ) {
     console.log("correct");
+    this.classList.add("correct");
     playerScore++;
-    console.log(playerScore);
+    scoreSpan.textContent = `${playerScore}`;
   } else {
-    console.log("Incorrect")
+    console.log("Incorrect");
+    this.classList.add("incorrect");
   }
-
-  if (currentQuestion < questions.length) {
+  // when to end game
+  if (currentQuestion < questions.length - 1) {
     currentQuestion++;
   } else {
     endGame();
   }
 }
 
-var modal = document.querySelector('.modal');
+// MODAL end game
 
+var modal = document.querySelector(".modal");
 
 function endGame() {
-  modal.classList.toggle('hidden');
-  modal.querySelector('h2').textContent = "You scored " + playerScore;
+  modal.classList.toggle("hidden");
+  modal.querySelector("h2").textContent =
+    "You scored " + playerScore + "/" + questions.length;
 }
 
-document.querySelector('#close').addEventListener('click', function () {
-  modal.classList.toggle('hidden');
-})
-
-
-
+document
+  .querySelector("#close")
+  .addEventListener("click", function() {
+    modal.classList.toggle("hidden");
+  });
